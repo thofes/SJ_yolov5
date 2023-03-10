@@ -693,6 +693,7 @@ def coco80_to_coco91_class():  # converts 80-index (val2014) to 91-index (paper)
 
 
 def xyxy2xywh(x):
+    """
     #change xywh for bigger labels in detections
     x[:, 0] = x[:, 0] - 120
     if x[:, 0] < 0:
@@ -702,7 +703,7 @@ def xyxy2xywh(x):
         x[:,2] = 1920
     x[:, 1] = x[:, 1] - 40
     x[:, 3] = x[:, 3] + 40
-    
+    """
     # Convert nx4 boxes from [x1, y1, x2, y2] to [x, y, w, h] where xy1=top-left, xy2=bottom-right
     y = x.clone() if isinstance(x, torch.Tensor) else np.copy(x)
     y[:, 0] = (x[:, 0] + x[:, 2]) / 2  # x center
